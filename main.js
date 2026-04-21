@@ -79,13 +79,13 @@
       dotState.pointerY += (dotState.targetY - dotState.pointerY) * 0.12;
       dotState.phase = time * 0.0012;
 
-      const spacing = 38;
-      const baseRadius = 0.9;
-      const influenceRadius = 480;
-      const rippleRadius = 720;
+      const spacing = 36;
+      const baseRadius = 1.05;
+      const influenceRadius = 520;
+      const rippleRadius = 800;
       const dotColor = isDark ? "255, 255, 255" : "10, 10, 10";
-      const maxAlpha = isDark ? 0.18 : 0.26;
-      const baseAlpha = isDark ? 0.065 : 0.105;
+      const maxAlpha = isDark ? 0.22 : 0.32;
+      const baseAlpha = isDark ? 0.075 : 0.125;
 
       for (let y = 18; y <= dotState.height + spacing; y += spacing) {
         for (let x = 18; x <= dotState.width + spacing; x += spacing) {
@@ -94,22 +94,25 @@
           const distance = Math.hypot(dx, dy);
           const nx = distance > 0 ? dx / distance : 0;
           const ny = distance > 0 ? dy / distance : 0;
-          const driftX = Math.sin((y * 0.016) + (dotState.phase * 0.72)) * 0.28;
-          const driftY = Math.cos((x * 0.015) + (dotState.phase * 0.62)) * 0.28;
+          const driftX = Math.sin((y * 0.016) + (dotState.phase * 0.72)) * 0.35;
+          const driftY = Math.cos((x * 0.015) + (dotState.phase * 0.62)) * 0.35;
 
           let offsetX = driftX;
           let offsetY = driftY;
-          let radius = baseRadius;
-          let alpha = baseAlpha;
+          
+          // Subtle global breathing effect
+          const pulse = Math.sin((time * 0.001) + (x * 0.005) + (y * 0.005));
+          let radius = baseRadius + (pulse * 0.15);
+          let alpha = baseAlpha + (pulse * 0.01);
 
           if (shouldAnimate && distance < rippleRadius) {
             const falloff = 1 - (distance / rippleRadius);
-            const ripple = Math.sin((distance * 0.014) - (time * 0.0048)) * falloff * 3.2;
+            const ripple = Math.sin((distance * 0.012) - (time * 0.0052)) * falloff * 4.2;
             const pull = Math.max(0, 1 - (distance / influenceRadius));
-            offsetX += (nx * ripple) - (nx * pull * 2.1);
-            offsetY += (ny * ripple) - (ny * pull * 2.1);
-            radius += (pull * 0.24) + (falloff * 0.08);
-            alpha += (pull * 0.1) + (falloff * 0.02);
+            offsetX += (nx * ripple) - (nx * pull * 3.2);
+            offsetY += (ny * ripple) - (ny * pull * 3.2);
+            radius += (pull * 0.32) + (falloff * 0.12);
+            alpha += (pull * 0.12) + (falloff * 0.04);
           }
 
           ctx.beginPath();
@@ -342,12 +345,7 @@
         }, 320);
       }
 
-      // Make the entire copy block clickable too
-      const copyBlock = project.querySelector(".project-visual-copy");
-      if (copyBlock) {
-        copyBlock.style.cursor = "pointer";
-        copyBlock.addEventListener("click", () => button.click());
-      }
+
 
       button.addEventListener("click", function () {
         const expanded = button.getAttribute("aria-expanded") === "true";
