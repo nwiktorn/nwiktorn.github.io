@@ -342,6 +342,13 @@
         }, 320);
       }
 
+      // Make the entire copy block clickable too
+      const copyBlock = project.querySelector(".project-visual-copy");
+      if (copyBlock) {
+        copyBlock.style.cursor = "pointer";
+        copyBlock.addEventListener("click", () => button.click());
+      }
+
       button.addEventListener("click", function () {
         const expanded = button.getAttribute("aria-expanded") === "true";
 
