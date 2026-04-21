@@ -1854,3 +1854,31 @@ body.menu-open { overflow: hidden; }
     filter: none !important;
   }
 }
+
+/* ===== FORM STATUS STYLES ===== */
+.form-status {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background: rgba(0, 255, 128, 0.1);
+  color: #00ff80;
+  border: 1px solid rgba(0, 255, 128, 0.2);
+}
+
+.form-status.error {
+  display: block;
+  background: rgba(255, 64, 64, 0.1);
+  color: #ff4040;
+  border: 1px solid rgba(255, 64, 64, 0.2);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

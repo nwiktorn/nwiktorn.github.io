@@ -562,4 +562,52 @@
 
 
 
+
+    // ===== CONTACT FORM HANDLING (Formspree + AJAX) =====
+    const contactForm = document.getElementById("contact-form");
+    const contactStatus = document.getElementById("contact-status");
+
+    if (contactForm) {
+      contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const submitBtn = contactForm.querySelector(".submit-btn");
+        const originalBtnText = submitBtn.textContent;
+
+        // Loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        contactStatus.textContent = "";
+        contactStatus.className = "form-status";
+
+        try {
+          const response = await fetch(event.target.action, {
+            method: contactForm.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            contactStatus.textContent = "Thanks! Your message has been sent successfully.";
+            contactStatus.classList.add("success");
+            contactForm.reset();
+          } else {
+            const result = await response.json();
+            if (result.errors) {
+              contactStatus.textContent = result.errors.map(error => error.message).join(", ");
+            } else {
+              contactStatus.textContent = "Oops! There was a problem submitting your form.";
+            }
+            contactStatus.classList.add("error");
+          }
+        } catch (error) {
+          contactStatus.textContent = "Oops! There was a problem submitting your form.";
+          contactStatus.classList.add("error");
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      });
+    }
+
 })();
