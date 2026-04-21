@@ -84,8 +84,8 @@
       const influenceRadius = 520;
       const rippleRadius = 800;
       const dotColor = isDark ? "255, 255, 255" : "10, 10, 10";
-      const maxAlpha = isDark ? 0.22 : 0.32;
-      const baseAlpha = isDark ? 0.075 : 0.125;
+      const maxAlpha = isDark ? 0.35 : 0.45;
+      const baseAlpha = isDark ? 0.12 : 0.18;
 
       for (let y = 18; y <= dotState.height + spacing; y += spacing) {
         for (let x = 18; x <= dotState.width + spacing; x += spacing) {
@@ -102,8 +102,8 @@
           
           // Subtle global breathing effect
           const pulse = Math.sin((time * 0.001) + (x * 0.005) + (y * 0.005));
-          let radius = baseRadius + (pulse * 0.15);
-          let alpha = baseAlpha + (pulse * 0.01);
+          let radius = baseRadius + (pulse * 0.25);
+          let alpha = baseAlpha + (pulse * 0.04);
 
           if (shouldAnimate && distance < rippleRadius) {
             const falloff = 1 - (distance / rippleRadius);

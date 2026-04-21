@@ -57,13 +57,14 @@
 
   html {
     scroll-behavior: smooth;
+    background: var(--bg);
   }
 
   body {
     margin: 0;
     font-family: var(--sans);
     color: var(--text);
-    background: var(--bg);
+    background: transparent;
     line-height: 1.55;
     transition: background-color 0.25s ease, color 0.25s ease;
     -webkit-font-smoothing: antialiased;
