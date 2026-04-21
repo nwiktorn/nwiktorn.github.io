@@ -58,7 +58,7 @@
 
       const isDark = root.dataset.theme === "dark";
       const isLight = root.dataset.theme === "light";
-      const shouldAnimate = finePointer.matches && !reduceMotion.matches;
+      const shouldAnimate = !reduceMotion.matches;
       const ctx = dotField.getContext("2d");
 
       if (!ctx) {
@@ -77,7 +77,7 @@
 
       dotState.pointerX += (dotState.targetX - dotState.pointerX) * 0.12;
       dotState.pointerY += (dotState.targetY - dotState.pointerY) * 0.12;
-      dotState.phase = time * 0.0012;
+      dotState.phase = (time || performance.now()) * 0.0012;
 
       const spacing = 36;
       const baseRadius = 1.05;
@@ -101,13 +101,13 @@
           let offsetY = driftY;
           
           // Subtle global breathing effect
-          const pulse = Math.sin((time * 0.001) + (x * 0.005) + (y * 0.005));
+          const pulse = Math.sin(((time || performance.now()) * 0.001) + (x * 0.005) + (y * 0.005));
           let radius = baseRadius + (pulse * 0.25);
           let alpha = baseAlpha + (pulse * 0.04);
 
           if (shouldAnimate && distance < rippleRadius) {
             const falloff = 1 - (distance / rippleRadius);
-            const ripple = Math.sin((distance * 0.012) - (time * 0.0052)) * falloff * 4.2;
+            const ripple = Math.sin((distance * 0.012) - ((time || performance.now()) * 0.0052)) * falloff * 4.2;
             const pull = Math.max(0, 1 - (distance / influenceRadius));
             offsetX += (nx * ripple) - (nx * pull * 3.2);
             offsetY += (ny * ripple) - (ny * pull * 3.2);
