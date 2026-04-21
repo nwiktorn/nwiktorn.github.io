@@ -34,6 +34,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <!-- Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="50bbb984-8d4e-40b0-95b7-049831238266"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -49,10 +51,10 @@
     </a>
 
     <nav class="nav" aria-label="Primary navigation">
-      <a class="nav-link" href="#work" data-cursor="Scroll" data-cursor-offset="nav">Work</a>
-      <a class="nav-link" href="#experience" data-cursor="Scroll" data-cursor-offset="nav">Experience</a>
-      <a class="nav-link" href="#skills" data-cursor="Scroll" data-cursor-offset="nav">Skills</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" data-cursor="Theme" data-cursor-offset="nav">
+      <a class="nav-link" href="#work" data-cursor="Scroll" data-cursor-offset="nav" data-umami-event="nav-work">Work</a>
+      <a class="nav-link" href="#experience" data-cursor="Scroll" data-cursor-offset="nav" data-umami-event="nav-experience">Experience</a>
+      <a class="nav-link" href="#skills" data-cursor="Scroll" data-cursor-offset="nav" data-umami-event="nav-skills">Skills</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" data-cursor="Theme" data-cursor-offset="nav" data-umami-event="theme-toggle">
         <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79"></path></svg>
         <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
       </button>
@@ -60,7 +62,7 @@
         <svg class="icon-hamburger" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         <svg class="icon-hamburger-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
-      <a class="cta nav-cta" href="#contact" data-cursor="Scroll" data-cursor-offset="nav">Get in touch</a>
+      <a class="cta nav-cta" href="#contact" data-cursor="Scroll" data-cursor-offset="nav" data-umami-event="nav-contact">Get in touch</a>
     </nav>
   </div>
 </header>
@@ -692,7 +694,7 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
           </div>
-          <button type="submit" class="cta submit-btn" data-cursor="Send">Send Message</button>
+          <button type="submit" class="cta submit-btn" data-cursor="Send" data-umami-event="contact-form-submit">Send Message</button>
           <div id="contact-status" class="form-status"></div>
         </form>
         </div>
