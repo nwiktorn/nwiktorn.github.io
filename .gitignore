@@ -1,0 +1,26 @@
+# IDE
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
+
+# Project specific
+portfolio_production.html
+scratch/
+append_css.py
+append_js.py
+split.py
+append_mobile_css.py
+append_hamburger_js.py
+append_header_css.py
+append_effects.py
+replace_typewriter.py
+fix_scramble.py
+fix_scramble2.py
+word_reveal.py
