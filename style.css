@@ -1882,3 +1882,21 @@ body.menu-open { overflow: hidden; }
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ===== STAT REVEAL ANIMATION (Option 1) ===== */
+@keyframes stat-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-slide-up {
+  opacity: 0;
+  display: block; /* Ensure transform works correctly */
+  animation: stat-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

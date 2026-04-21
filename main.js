@@ -496,9 +496,8 @@
         el.dataset.counterDone = "false";
         el.textContent = "0" + (numMatch[2] || "");
       } else {
-        el.dataset.typewriterTarget = raw;
         el.dataset.typewriterDone = "false";
-        el.textContent = "";
+        el.style.opacity = "0";
       }
     });
 
@@ -544,9 +543,9 @@
         if (el.dataset.typewriterDone === "false") {
           el.dataset.typewriterDone = "true";
           if (!reduceMotion.matches) {
-            animateStatTypewriter(el, el.dataset.typewriterTarget, 1000);
+            el.classList.add("stat-slide-up");
           } else {
-            el.textContent = el.dataset.typewriterTarget;
+            el.style.opacity = "1";
           }
           statObserver.unobserve(el);
         }
