@@ -2215,3 +2215,674 @@ html[data-theme="dark"] .bento-item:hover {
 }
 
 
+/* ============================================================
+   PROJECT PANEL — PREVIEW MODE (strona główna)
+   ============================================================ */
+
+.project-panel-preview {
+  border-top-color: var(--text);
+}
+
+.preview-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+
+.preview-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.preview-copy h3 {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.preview-desc {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+.preview-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.preview-btn {
+  min-width: 200px;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 52px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.preview-hint {
+  font: 500 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: right;
+}
+
+@media (max-width: 860px) {
+  .preview-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .preview-cta {
+    align-items: flex-start;
+  }
+  .preview-hint {
+    text-align: left;
+  }
+  .preview-btn {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+
+/* ============================================================
+   CASE STUDY SUBPAGE — SHARED LAYOUT
+   ============================================================ */
+
+.case-hero {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--project-gradient, linear-gradient(135deg, #181818, #5f5f5f));
+  color: var(--project-ink, #ffffff);
+}
+
+.case-hero::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -60px -80px auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  filter: blur(4px);
+  z-index: 0;
+}
+
+.case-hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 56px;
+}
+
+.case-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 80px;
+}
+
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.case-back:hover {
+  color: #ffffff;
+  gap: 4px;
+}
+
+.case-back svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.case-hero-number {
+  font: 500 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.case-hero-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: end;
+}
+
+.case-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.case-hero-sub {
+  font: 500 12px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 14px;
+}
+
+.case-hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.case-tag {
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================================
+   CASE STUDY — SECTION BLOCKS
+   ============================================================ */
+
+.case-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-kicker {
+  font: 500 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.case-kicker::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--muted);
+  flex-shrink: 0;
+}
+
+.case-section h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+
+.case-body {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.case-body + .case-body {
+  margin-top: 18px;
+}
+
+/* ============================================================
+   CASE STUDY — SPLIT LAYOUT (foto | tekst)
+   ============================================================ */
+
+.case-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+}
+
+.case-split.reverse {
+  direction: rtl;
+}
+
+.case-split.reverse > * {
+  direction: ltr;
+}
+
+.case-split-photo {
+  position: relative;
+  background: var(--accent-soft);
+  min-height: 420px;
+  overflow: hidden;
+  border-right: 1px solid var(--line);
+}
+
+.case-split.reverse .case-split-photo {
+  border-right: 0;
+  border-left: 1px solid var(--line);
+}
+
+.case-split-photo::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed var(--line);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-split-photo .photo-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.case-split-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-split-content {
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* ============================================================
+   CASE STUDY — FULL WIDTH PHOTO
+   ============================================================ */
+
+.case-photo-full {
+  position: relative;
+  background: var(--accent-soft);
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.case-photo-full::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px dashed var(--line);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-photo-full .photo-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.case-photo-full img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   CASE STUDY — PHOTO GRID
+   ============================================================ */
+
+.case-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.case-photo-grid .case-photo-cell {
+  position: relative;
+  background: var(--accent-soft);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.case-photo-grid .case-photo-cell.wide {
+  grid-column: span 2;
+  aspect-ratio: 8 / 3;
+}
+
+.case-photo-cell::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed var(--line);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.case-photo-cell .photo-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 2;
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.case-photo-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   CASE STUDY — QUOTE / HIGHLIGHT BLOCK
+   ============================================================ */
+
+.case-quote {
+  padding: 56px 64px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+.case-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0;
+  right: 32px;
+  font-size: 10rem;
+  line-height: 1;
+  color: var(--line);
+  font-family: var(--sans);
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.case-quote blockquote {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  max-width: 28ch;
+}
+
+.case-quote cite {
+  display: block;
+  margin-top: 20px;
+  font: 500 11px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ============================================================
+   CASE STUDY — OUTCOMES GRID
+   ============================================================ */
+
+.case-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 32px;
+}
+
+.case-outcome-item {
+  background: var(--bg);
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-outcome-item strong {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.case-outcome-item span {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.4;
+  max-width: 22ch;
+}
+
+/* ============================================================
+   CASE STUDY — PROJECT NAVIGATION (prev / next)
+   ============================================================ */
+
+.project-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 80px;
+  padding-top: 48px;
+  border-top: 1px solid var(--line);
+}
+
+.project-nav-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  transition: border-color 0.22s ease, transform 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-nav-item:hover {
+  border-color: var(--text);
+  transform: translateY(-3px);
+}
+
+.project-nav-direction {
+  font: 500 10px/1 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-nav-direction svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.project-nav-title {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.project-nav-sub {
+  font: 500 11px/1.3 var(--mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.project-nav-item.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* ============================================================
+   CASE STUDY — ROLE LIST
+   ============================================================ */
+
+.case-role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-role-list li {
+  padding: 16px 0 16px 20px;
+  border-bottom: 1px dashed var(--line);
+  color: var(--muted);
+  position: relative;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.case-role-list li:last-child {
+  border-bottom: 0;
+}
+
+.case-role-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 26px;
+  width: 8px;
+  height: 1px;
+  background: var(--text);
+}
+
+/* ============================================================
+   RESPONSIVE — CASE STUDY
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .case-hero-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .case-hero-aside {
+    align-items: flex-start;
+  }
+  .case-tags {
+    justify-content: flex-start;
+  }
+  .case-hero-inner {
+    padding: 32px 28px;
+  }
+  .case-split {
+    grid-template-columns: 1fr;
+  }
+  .case-split-photo {
+    min-height: 280px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-split.reverse .case-split-photo {
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .case-split-content {
+    padding: 32px 28px;
+  }
+  .case-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .case-photo-grid .case-photo-cell.wide {
+    grid-column: span 2;
+    aspect-ratio: 4 / 2;
+  }
+  .case-outcomes {
+    grid-template-columns: 1fr;
+  }
+  .case-quote {
+    padding: 36px 28px;
+  }
+  .project-nav {
+    grid-template-columns: 1fr;
+  }
+  .project-nav-item.next {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .case-hero {
+    min-height: 55vh;
+  }
+  .case-hero h1 {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+  .case-section {
+    padding: 52px 0;
+  }
+  .case-photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .case-photo-grid .case-photo-cell.wide {
+    grid-column: span 1;
+    aspect-ratio: 4 / 3;
+  }
+}
