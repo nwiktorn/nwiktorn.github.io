@@ -441,52 +441,7 @@
     }
 
 
-    // ===== BRAND TEXT SCRAMBLE ON HOVER =====
-    const brandName = document.querySelector(".brand-name");
-    if (brandName && finePointer.matches) {
-      const originalBrandText = brandName.textContent;
-      const scrambleChars = "!<>-_\\/[]{}=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let brandScrambleRaf = null;
 
-      function runScramble(element, finalText, duration) {
-        const start = performance.now();
-        cancelAnimationFrame(brandScrambleRaf);
-
-        function step(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const revealCount = Math.floor(progress * finalText.length);
-          let out = "";
-
-          for (let i = 0; i < finalText.length; i++) {
-            if (finalText[i] === " ") {
-              out += " ";
-            } else if (i < revealCount) {
-              out += finalText[i];
-            } else {
-              out += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-            }
-          }
-
-          element.textContent = out;
-          if (progress < 1) {
-            brandScrambleRaf = requestAnimationFrame(step);
-          } else {
-            element.textContent = finalText;
-          }
-        }
-
-        brandScrambleRaf = requestAnimationFrame(step);
-      }
-
-      const brandEl = document.querySelector(".brand");
-      if (brandEl) {
-        brandEl.addEventListener("pointerenter", function () {
-          if (!reduceMotion.matches) {
-            runScramble(brandName, originalBrandText, 540);
-          }
-        });
-      }
-    }
 
     // ===== STAT COUNTERS & TEXT SCRAMBLE =====
     const statEls = document.querySelectorAll(".stat strong");
